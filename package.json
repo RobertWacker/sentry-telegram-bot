@@ -7,7 +7,7 @@
   "author": "Robert Wacker",
   "license": "MIT",
   "scripts": {
-    "start": "nmp i && node ./src/index.js"
+    "start": "node ./src/index.js"
   },
   "dependencies": {
     "fastify": "^2.11.0",

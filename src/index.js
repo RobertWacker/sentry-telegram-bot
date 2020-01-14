@@ -7,7 +7,7 @@ bot.on('text', ({ reply }) => reply('Hello'))
 fastifyApp.use(bot.webhookCallback('/secret-path'))
 // Set telegram webhook
 // npm install -g localtunnel && lt --port 3000
-bot.telegram.setWebhook('kinobu-sentry.herokuapp.com/secret-path')
+bot.telegram.setWebhook('http://kinobu-sentry.herokuapp.com/secret-path')
 
 fastifyApp.route({
     method: 'POST',

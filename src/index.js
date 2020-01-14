@@ -6,10 +6,14 @@ const fastifyApp = require('fastify')()
 const bot = new Telegraf(TELEGRAM_TOKEN)
 
 bot.on('text', ({ reply }) => reply('Hello'))
-fastifyApp.use(bot.webhookCallback(`/${TELEGRAM_TOKEN}`))
+fastifyApp.use(bot.webhookCallback(`/`))
 // Set telegram webhook
 // npm install -g localtunnel && lt --port 3000
-bot.telegram.setWebhook(`https://kinobu-sentry.herokuapp.com/${TELEGRAM_TOKEN}`)
+bot.telegram.setWebhook(`https://kinobu-sentry.herokuapp.com/`)
+
+fastifyApp.post('/', (req, reply) => {
+  console.dir(req)
+})
 
 fastifyApp.listen(3000, () => {
   console.log('Example app listening on port 3000!')

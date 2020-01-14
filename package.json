@@ -6,6 +6,9 @@
   "repository": "https://github.com/RobertWacker/sentry-telegram-bot",
   "author": "Robert Wacker",
   "license": "MIT",
+  "scripts": {
+    "start": "nmp i && node ./src/index.js"
+  },
   "dependencies": {
     "fastify": "^2.11.0",
     "telegraf": "^3.35.0"

@@ -1,30 +1,16 @@
 const TELEGRAM_TOKEN = process.env.BOT_TOKEN || '1023212388:AAHOrrjkD1yD_iK457-gx065ssmKJzYlsy0'
-const TelegramBot = require('node-telegram-bot-api');
 
-// replace the value below with the Telegram token you receive from @BotFather
-const token = 'YOUR_TELEGRAM_BOT_TOKEN';
+const Telegraf = require('telegraf')
+const fastifyApp = require('fastify')()
 
-// Create a bot that uses 'polling' to fetch new updates
-const bot = new TelegramBot(TELEGRAM_TOKEN, {polling: true});
+const bot = new Telegraf(TELEGRAM_TOKEN)
 
-// Matches "/echo [whatever]"
-bot.onText(/\/echo (.+)/, (msg, match) => {
-  // 'msg' is the received Message from Telegram
-  // 'match' is the result of executing the regexp above on the text content
-  // of the message
+bot.on('text', ({ reply }) => reply('Hello'))
+fastifyApp.use(bot.webhookCallback(`/${TELEGRAM_TOKEN}`))
+// Set telegram webhook
+// npm install -g localtunnel && lt --port 3000
+bot.telegram.setWebhook(`https://kinobu-sentry.herokuapp.com/${TELEGRAM_TOKEN}`)
 
-  const chatId = msg.chat.id;
-  const resp = match[1]; // the captured "whatever"
-
-  // send back the matched "whatever" to the chat
-  bot.sendMessage(chatId, resp);
-});
-
-// Listen for any kind of message. There are different kinds of
-// messages.
-bot.on('message', (msg) => {
-  const chatId = msg.chat.id;
-
-  // send a message to the chat acknowledging receipt of their message
-  bot.sendMessage(chatId, 'Received your message');
-});
+fastifyApp.listen(3000, () => {
+  console.log('Example app listening on port 3000!')
+})

@@ -10,7 +10,7 @@ fastifyApp.use(bot.webhookCallback('/secret-path'))
 bot.telegram.setWebhook('https://kinobu-sentry.herokuapp.com/secret-path')
 
 fastifyApp.route({
-    method: 'POST',
+    method: 'GET',
     url: '/secret-path',
     schema: {
       querystring: {

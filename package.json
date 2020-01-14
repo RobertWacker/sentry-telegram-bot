@@ -1,0 +1,13 @@
+{
+  "name": "sentry-telegram-bot",
+  "version": "1.0.0",
+  "description": "Bot to send errors from Sentry.io to Telegram",
+  "main": "src/index.js",
+  "repository": "https://github.com/RobertWacker/sentry-telegram-bot",
+  "author": "Robert Wacker",
+  "license": "MIT",
+  "dependencies": {
+    "fastify": "^2.11.0",
+    "telegraf": "^3.35.0"
+  }
+}
